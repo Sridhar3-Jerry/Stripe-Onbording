@@ -78,12 +78,19 @@ function Signup() {
       </div>
       <div className="relative">
         <GridLines />
-        <div
-          className="absolute top-10 left-0 right-0 bottom-0 -z-2 animated-gradient"
-          style={{
-            clipPath: "polygon(0 60%, 100% 20%, 100% 100%, 0 100%)",
-          }}
-        />
+        <motion.div
+            initial={{ backgroundPosition:"0% 50%"}}
+            animate={{ backgroundPosition:["0% 50%","100% 50%","0% 50%"] }}
+            transition={{ duration: 10,repeat:Infinity,ease:"linear" }}
+            style={{
+              clipPath: "polygon(0 90%, 100% 0, 100% 100%, 0 100%)",
+             
+              background: "linear-gradient(90deg,red,green,violet,blue)",
+              backgroundSize:"200% 200%",
+              opacity:0.9,
+            }}
+            className="absolute top-10 left-0 right-0 bottom-0 z-0 bg-gradient-to-br from-blue-200 to-purple-300"
+          />
         <div className="flex flex-col md:flex-row justify-center min-h-screen">
           <div className="z-10 hidden md:flex flex-col gap-3 w-full md:w-1/5 pr-4 md:pr-24 mt-10 mr-5">
             <Content />
@@ -208,7 +215,14 @@ function Signup() {
               <span className="px-3 text-gray-600 text-sm">OR</span>
               <div className="flex-grow h-0.5 bg-gray-200"></div>
             </div>
-            <Buttons src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/2048px-Google_%22G%22_logo.svg.png" buttonText="Sign in with Google" alt="google-logo" className="w-4 h-4 mt-1" />
+             <Buttons>
+                <img
+                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/2048px-Google_%22G%22_logo.svg.png"
+                  alt="google-logo"
+                  className="w-4 h-4 mt-1"
+                />
+                Sign in with Google
+              </Buttons>
             <div className="mt-5 w-full">
               <p className="p-5 bg-[#f6f9fc] relative -mx-6 md:-mx-10 rounded-xl text-center text-sm ">
                 Already have an account?{" "}

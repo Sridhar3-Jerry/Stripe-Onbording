@@ -73,11 +73,19 @@ function Signin() {
         <div className="absolute top-0 left-[60%] w-px h-full border border-dashed border-gray-100"></div>
         <div className="absolute top-0 left-[80%] w-px h-full border border-gray-100"></div>
       </div>
-      <div
-        className="absolute top-0 left-0 right-0 bottom-0 -z-5 animated-gradient"
+      <motion.div
+        initial={{ backgroundPosition:"0% 50%"}}
+        animate={{ backgroundPosition:["0% 50%","100% 50%","0% 50%"] }}
+        transition={{ duration: 10,repeat:Infinity,ease:"linear" }}
         style={{
-          clipPath: "polygon(0 50%, 100% 10%, 100% 0%, 0% 0%)",
+          clipPath: "polygon(0 0, 10% 0, 100% 0%, 0 80%)",
+         
+          background: "linear-gradient(90deg,red,green,violet,blue)",
+          backgroundSize:"200% 200%",
+          opacity:0.9,
         }}
+        className="absolute top-0 left-0 right-0 bottom-0 z-0 bg-gradient-to-br from-blue-200 to-purple-300 animated-gradient"
+        // You can adjust the z-index and background as needed
       />
       <div className="w-full md:w-full flex justify-center border-b border-dashed border-gray-100 z-20">
         <h1 className="font-bold text-3xl p-5 w-1/2 ml-48 z-20 text-white">
@@ -142,10 +150,17 @@ function Signin() {
               <span className="px-3 text-gray-600 text-xs font-extralight">OR</span>
               <div className="flex-grow h-0.5 bg-gray-100 w-1/2 mr-3"></div>
             </div>
-            <div className="flex flex-col gap-2 bg-white flex justify-center items-center w-full">
-              <Buttons src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/2048px-Google_%22G%22_logo.svg.png" buttonText="Sign in with Google" alt="google-logo" className="w-4 h-4 mt-1" />
-              <Buttons buttonText="Sign in with passkey"/>
-              <Buttons buttonText="Sign in with SSO" />
+            <div className="flex flex-col gap-2 bg-white justify-center items-center w-full">
+              <Buttons>
+                <img
+                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/2048px-Google_%22G%22_logo.svg.png"
+                  alt="google-logo"
+                  className="w-4 h-4 mt-1"
+                />
+                Sign in with Google
+              </Buttons>
+              <Buttons>Sign in with passkey</Buttons>
+              <Buttons>Sign in with SSO</Buttons>
             </div>
 
             <div className="mt-7 w-full ">
